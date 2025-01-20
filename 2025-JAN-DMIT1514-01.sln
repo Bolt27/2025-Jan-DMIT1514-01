@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson03_draw_sprite_exerci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson03_draw_sprite", "lesson03_draw_sprite\lesson03_draw_sprite.csproj", "{ADFA7A09-232C-40E2-9E03-EDC81F728DE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson05_keyboard_input", "lesson05_keyboard_input\lesson05_keyboard_input.csproj", "{AFE54ABD-F0CA-4C78-8218-51FFE6F269B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{ADFA7A09-232C-40E2-9E03-EDC81F728DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADFA7A09-232C-40E2-9E03-EDC81F728DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADFA7A09-232C-40E2-9E03-EDC81F728DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE54ABD-F0CA-4C78-8218-51FFE6F269B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE54ABD-F0CA-4C78-8218-51FFE6F269B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE54ABD-F0CA-4C78-8218-51FFE6F269B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE54ABD-F0CA-4C78-8218-51FFE6F269B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
