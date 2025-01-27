@@ -6,12 +6,14 @@ namespace lesson06_tictactoe01_mouse_input;
 
 public class TicTacToe : Game
 {
-    private const int _WindowWidth = 500, _WindowHeight = 500; //eventually these will be 170px
-    
+    private const int _WindowWidth = 170, _WindowHeight = 170; 
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
     private Texture2D _backgroundImage, _xImage, _oImage;
+
+    private MouseState _currentMouseState, _previousMouseState;
+    
 
     public TicTacToe()
     {
@@ -25,7 +27,7 @@ public class TicTacToe : Game
         _graphics.PreferredBackBufferHeight = _WindowHeight;
         _graphics.ApplyChanges();
 
-        this.IsMouseVisible = false;
+        this.IsMouseVisible = true;
 
         base.Initialize();
     }
@@ -41,7 +43,18 @@ public class TicTacToe : Game
 
     protected override void Update(GameTime gameTime)
     {
+        _currentMouseState = Mouse.GetState();
 
+        //detect a mouse up event
+        if(_previousMouseState.LeftButton == ButtonState.Pressed
+            && _currentMouseState.LeftButton == ButtonState.Released)
+        {
+            //declare a data member that will remember the next token to be played
+            //change Draw() so that it draws the next token to be played
+            //when this "if" statement is entered, change the next token to be played
+        }
+
+        _previousMouseState = _currentMouseState;
         base.Update(gameTime);
     }
 
@@ -51,6 +64,17 @@ public class TicTacToe : Game
 
         _spriteBatch.Begin();
         _spriteBatch.Draw(_backgroundImage, Vector2.Zero, Color.White);
+
+        // Vector2 adjustedMousePosition = new Vector2(
+        //     _currentMouseState.Position.X - (_xImage.Width / 2),
+        //     _currentMouseState.Position.Y - (_xImage.Width / 2)
+        // );
+        //to draw the centre of "X" where the mouse is, subtract the Vector2 that
+        //represents the centre of the bounding box of "X"
+        Vector2 adjustedMousePosition = 
+            _currentMouseState.Position.ToVector2() - _xImage.Bounds.Center.ToVector2();
+        
+        _spriteBatch.Draw(_xImage, adjustedMousePosition, Color.White);
         _spriteBatch.End();
 
         base.Draw(gameTime);
