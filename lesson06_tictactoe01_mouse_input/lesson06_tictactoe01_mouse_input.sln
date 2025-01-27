@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson06_tictactoe01_mouse_input", "lesson06_tictactoe01_mouse_input.csproj", "{8C7D3D66-423D-E8A8-39A3-FBE497CAC7AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C7D3D66-423D-E8A8-39A3-FBE497CAC7AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C7D3D66-423D-E8A8-39A3-FBE497CAC7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C7D3D66-423D-E8A8-39A3-FBE497CAC7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C7D3D66-423D-E8A8-39A3-FBE497CAC7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC1720C9-0704-49F8-A76C-D168629F193A}
+	EndGlobalSection
+EndGlobal
