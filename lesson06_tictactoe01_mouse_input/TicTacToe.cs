@@ -14,6 +14,12 @@ public class TicTacToe : Game
 
     private MouseState _currentMouseState, _previousMouseState;
     
+    public enum GameSpaceState
+    {
+        X,
+        O
+    }
+    private GameSpaceState _nextTokenToBePlayed = GameSpaceState.X;
 
     public TicTacToe()
     {
@@ -53,15 +59,14 @@ public class TicTacToe : Game
             //change Draw() so that it draws the next token to be played
             //when this "if" statement is entered, change the next token to be played
             if(_nextTokenToBePlayed == GameSpaceState.X)
-                {
-                    _nextTokenToBePlayed = GameSpaceState.O;
-                }
-                else if (_nextTokenToBePlayed == GameSpaceState.O)
-                {
-                    _nextTokenToBePlayed = GameSpaceState.X;
-                }
+            {
+                _nextTokenToBePlayed = GameSpaceState.O;
+            }
+            else
+            {
+                _nextTokenToBePlayed = GameSpaceState.X;
+            }
         }
-
         _previousMouseState = _currentMouseState;
         base.Update(gameTime);
     }
@@ -82,7 +87,13 @@ public class TicTacToe : Game
         Vector2 adjustedMousePosition = 
             _currentMouseState.Position.ToVector2() - _xImage.Bounds.Center.ToVector2();
         
-        _spriteBatch.Draw(_xImage, adjustedMousePosition, Color.White);
+        Texture2D tokenToDraw = _oImage;
+        if(_nextTokenToBePlayed == GameSpaceState.X)
+        {
+            tokenToDraw = _xImage;
+        }
+        _spriteBatch.Draw(tokenToDraw, adjustedMousePosition, Color.White);
+        
         _spriteBatch.End();
 
         base.Draw(gameTime);
