@@ -52,6 +52,14 @@ public class TicTacToe : Game
             //declare a data member that will remember the next token to be played
             //change Draw() so that it draws the next token to be played
             //when this "if" statement is entered, change the next token to be played
+            if(_nextTokenToBePlayed == GameSpaceState.X)
+                {
+                    _nextTokenToBePlayed = GameSpaceState.O;
+                }
+                else if (_nextTokenToBePlayed == GameSpaceState.O)
+                {
+                    _nextTokenToBePlayed = GameSpaceState.X;
+                }
         }
 
         _previousMouseState = _currentMouseState;
