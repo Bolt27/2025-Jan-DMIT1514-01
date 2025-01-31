@@ -46,13 +46,17 @@ public class TicTacToe : Game
     protected override void Update(GameTime gameTime)
     {
         _currentMouseState = Mouse.GetState();
-        if(_nextTokenToBePlayed == GameSpaceState.X)
+        if(_previousMouseState.LeftButton == ButtonState.Pressed
+            && _currentMouseState.LeftButton == ButtonState.Released)
         {
-            _nextTokenToBePlayed = GameSpaceState.O;
-        }
-        else
-        {
-            _nextTokenToBePlayed = GameSpaceState.X;
+            if(_nextTokenToBePlayed == GameSpaceState.X)
+            {
+                _nextTokenToBePlayed = GameSpaceState.O;
+            }
+            else
+            {
+                _nextTokenToBePlayed = GameSpaceState.X;
+            }
         }
         _previousMouseState = _currentMouseState;
         base.Update(gameTime);
