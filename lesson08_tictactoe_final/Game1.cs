@@ -4,12 +4,21 @@ using Microsoft.Xna.Framework.Input;
 
 namespace lesson08_tictactoe_final;
 
-public class Game1 : Game
+public class TicTacToe : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public Game1()
+    private Texture2D _gameBoardImage, _xImage, _oImage;
+    private MouseState _currentMouseState, _previousMouseState;
+    private const int _WindowWidth = 170, _WindowHeight = 170;
+
+    public enum GameSpaceState
+    {
+        X, O, Empty
+    }
+    private GameSpaceState _nextTokenToBePlayed = GameSpaceState.X;
+    public TicTacToe()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
@@ -18,7 +27,9 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        _graphics.PreferredBackBufferWidth = _WindowWidth;
+        _graphics.PreferredBackBufferHeight = _WindowHeight;
+        _graphics.ApplyChanges();
 
         base.Initialize();
     }
@@ -27,16 +38,23 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
+        _gameBoardImage = Content.Load<Texture2D>("TicTacToeBoard");
+        _xImage = Content.Load<Texture2D>("X");
+        _oImage = Content.Load<Texture2D>("O");
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        // TODO: Add your update logic here
-
+        _currentMouseState = Mouse.GetState();
+        if(_nextTokenToBePlayed == GameSpaceState.X)
+        {
+            _nextTokenToBePlayed = GameSpaceState.O;
+        }
+        else
+        {
+            _nextTokenToBePlayed = GameSpaceState.X;
+        }
+        _previousMouseState = _currentMouseState;
         base.Update(gameTime);
     }
 
@@ -44,8 +62,20 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
 
+        _spriteBatch.Draw(_gameBoardImage, Vector2.Zero, Color.White);
+        Vector2 adjustedMousePosition =
+                    _currentMouseState.Position.ToVector2() - _xImage.Bounds.Center.ToVector2();
+        if(_nextTokenToBePlayed == GameSpaceState.X)
+        {
+            _spriteBatch.Draw(_xImage, adjustedMousePosition, Color.White);
+        }
+        else
+        {
+            _spriteBatch.Draw(_oImage, adjustedMousePosition, Color.White);
+        }
+        _spriteBatch.End();
         base.Draw(gameTime);
     }
 }
