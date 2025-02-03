@@ -24,23 +24,22 @@ public class TicTacToe : Game
     {
         X, O, Empty
     }
-    private GameSpaceState _nextTokenToBePlayed = GameSpaceState.X;
+    private GameSpaceState _nextTokenToBePlayed;
 
     private GameSpaceState[,] _gameBoard = 
         new GameSpaceState[,]
         {
-            {GameSpaceState.Empty, GameSpaceState.X, GameSpaceState.Empty},
+            {GameSpaceState.Empty, GameSpaceState.O, GameSpaceState.Empty},
             {GameSpaceState.X, GameSpaceState.Empty, GameSpaceState.Empty},
             {GameSpaceState.Empty, GameSpaceState.X, GameSpaceState.O}
         };
 
-    GameSpaceState topLeft, topMiddle, topRight;
-
+#region set up methods
     public TicTacToe()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
-        IsMouseVisible = true;
+        IsMouseVisible = false;
     }
 
     protected override void Initialize()
@@ -60,6 +59,7 @@ public class TicTacToe : Game
         _xImage = Content.Load<Texture2D>("X");
         _oImage = Content.Load<Texture2D>("O");
     }
+#endregion
 
     protected override void Update(GameTime gameTime)
     {
@@ -70,6 +70,15 @@ public class TicTacToe : Game
             case GameState.Initialize:
                 _nextTokenToBePlayed = GameSpaceState.X;
                 //TODO: set all game board spaces to empty
+                //Exercise: loop through _gameBoard (rows and columns), and set every every
+                //game board space to Empty
+                // for(int row = 0; row < _gameBoard.GetLength(0); row++)
+                // {
+                //     for(int column = 0; column < _gameBoard.GetLength(1); column++)
+                //     {
+                //         _gameBoard[row, column] = GameSpaceState.Empty;
+                //     }
+                // }
                 _currentGameState = GameState.WaitForPlayerMove;
                 break;
             case GameState.WaitForPlayerMove:
@@ -77,6 +86,13 @@ public class TicTacToe : Game
                     && _currentMouseState.LeftButton == ButtonState.Released)
                 {
                     //todo: check if this move is valid
+                    //inside of this "if" statement, we know that there was a click
+                    //now, we have to get the X and Y of where they clicked
+                    int x = _currentMouseState.X;//84
+                    int y = _currentMouseState.Y;//26
+
+                    int correspondingGameBoardRow = y / _xImage.Height; //convert 26 to 0
+                    int correspondingGameBoardColumn = x / _xImage.Width; //convert 84 to 0
                     //if so, 
                     _currentGameState = GameState.MakePlayerMove;
                 }

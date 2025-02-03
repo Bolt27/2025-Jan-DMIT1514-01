@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lesson07_2D_arrays")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4137e52c3ff7d1184b24b81d390fd5f1fd3e451c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cda3fdcba99147062e22167ce58ac7a95924fd1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("lesson07_2D_arrays")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lesson07_2D_arrays")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
