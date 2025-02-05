@@ -1,0 +1,8 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/cat_walk.png","C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/bin/DesktopGL/Content/cat_walk.xnb","TextureProcessor","Texture2DContent",2784,28757,0.25726
+"C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/Chair_Side.PNG","C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/bin/DesktopGL/Content/Chair_Side.xnb","TextureProcessor","Texture2DContent",380094,1161125,0.1199845
+"C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/Jesus_Stained_Glass.png","C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/bin/DesktopGL/Content/Jesus_Stained_Glass.xnb","TextureProcessor","Texture2DContent",25294,1228885,0.0975947
+"C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/priestWalkingDown.png","C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/bin/DesktopGL/Content/priestWalkingDown.xnb","TextureProcessor","Texture2DContent",721,9301,0.0080649
+"C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/priestWalkingLeft.png","C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/bin/DesktopGL/Content/priestWalkingLeft.xnb","TextureProcessor","Texture2DContent",662,9301,0.0156151
+"C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/priestWalkingRight.png","C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/bin/DesktopGL/Content/priestWalkingRight.xnb","TextureProcessor","Texture2DContent",660,9301,0.0277412
+"C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/priestWalkingUp.png","C:/Github/2025-Jan-DMIT1514-01/assignment01/Content/bin/DesktopGL/Content/priestWalkingUp.xnb","TextureProcessor","Texture2DContent",683,9301,0.0153155
