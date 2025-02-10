@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Github/2025-Jan-DMIT1514-01/lesson09_pong_begin/Content/Court.png</SourceFile>
+  <SourceTime>2025-02-10T10:48:42.2023687-07:00</SourceTime>
+  <DestFile>C:/Github/2025-Jan-DMIT1514-01/lesson09_pong_begin/Content/bin/DesktopGL/Court.xnb</DestFile>
+  <DestTime>2025-02-10T10:59:10.597473-07:00</DestTime>
+  <Importer>TextureImporter</Importer>
+  <ImporterTime>2024-08-16T11:05:56-06:00</ImporterTime>
+  <Processor>TextureProcessor</Processor>
+  <ProcessorTime>2024-08-16T11:05:56-06:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
