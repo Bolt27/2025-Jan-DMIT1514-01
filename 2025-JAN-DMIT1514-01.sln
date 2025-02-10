@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson07_2D_arrays", "lesso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson08_tictactoe_final", "lesson08_tictactoe_final\lesson08_tictactoe_final.csproj", "{B86B5369-B0E1-4459-A0A4-5560402A02B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson09_pong_begin", "lesson09_pong_begin\lesson09_pong_begin.csproj", "{C6A58752-7698-41C8-BEEF-A6DA79B0C907}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,9 @@ Global
 		{B86B5369-B0E1-4459-A0A4-5560402A02B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B86B5369-B0E1-4459-A0A4-5560402A02B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B86B5369-B0E1-4459-A0A4-5560402A02B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6A58752-7698-41C8-BEEF-A6DA79B0C907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A58752-7698-41C8-BEEF-A6DA79B0C907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A58752-7698-41C8-BEEF-A6DA79B0C907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A58752-7698-41C8-BEEF-A6DA79B0C907}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
