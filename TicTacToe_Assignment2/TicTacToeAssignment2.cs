@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace lesson08_tictactoe_final;
+namespace TicTacToe_Assignment2;
 
 public class TicTacToe : Game
 {
@@ -161,7 +161,6 @@ public class TicTacToe : Game
             case GameState.EvaluatePlayerMove:
                 break;
             case GameState.GameOver:
-                //todo: 
                 GraphicsDevice.Clear(Color.Black);
                 string message = _nextTokenToBePlayed == GameSpaceState.X ? "Congratulations X, \nYou Win!\n" : "Congratulations O, \nYou Win!\n";
                 if (IsTheBoardFull() && !CheckForWinner(GameSpaceState.X) && !CheckForWinner(GameSpaceState.O))
