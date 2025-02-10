@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/O.png","C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/bin/DesktopGL/Content/O.xnb","TextureProcessor","Texture2DContent",4684,10085,0.0993936
+"C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/SystemArialFont.spritefont","C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/bin/DesktopGL/Content/SystemArialFont.xnb","FontDescriptionProcessor","SpriteFontContent",2073,21538,0.0894355
+"C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/TicTacToeBoard.png","C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/bin/DesktopGL/Content/TicTacToeBoard.xnb","TextureProcessor","Texture2DContent",3376,115685,0.0165154
+"C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/X.png","C:/Github/2025-Jan-DMIT1514-01/TicTacToe_Assignment2/Content/bin/DesktopGL/Content/X.xnb","TextureProcessor","Texture2DContent",4716,10085,0.0096024

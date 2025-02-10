@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -15,6 +16,9 @@ public class TicTacToe : Game
     private const int _WindowWidth = 170, _WindowHeight = 170;
     private int correspondingGameBoardRow;
     private int correspondingGameBoardColumn;
+    Vector2 tokenPosition;
+    Color tokenColor = Color.White;
+    private List<Vector2> _winningToken = new List<Vector2>();
     private SpriteFont _arialFont;
     public enum GameState
     {
@@ -163,6 +167,18 @@ public class TicTacToe : Game
             case GameState.GameOver:
                 GraphicsDevice.Clear(Color.Black);
                 string message = _nextTokenToBePlayed == GameSpaceState.X ? "Congratulations X, \nYou Win!\n" : "Congratulations O, \nYou Win!\n";
+                _spriteBatch.DrawString(_arialFont, "Press Space to \nsee winner", new Vector2(0, 100), Color.White);
+                if(Keyboard.GetState().IsKeyDown(Keys.Space))
+                {
+                    if (CheckForWinner(GameSpaceState.X) || CheckForWinner(GameSpaceState.O))
+                    {
+                        if (_winningToken.Contains(tokenPosition))
+                        {
+                            this.DrawCurrentGameBoard();
+                            tokenColor = Color.Green;
+                        }
+                    }
+                }
                 if (IsTheBoardFull() && !CheckForWinner(GameSpaceState.X) && !CheckForWinner(GameSpaceState.O))
                 {
                     message = "There is no winner, \nit's a tie!\n";
@@ -184,6 +200,7 @@ public class TicTacToe : Game
             {
                 int xOffset = (column == 0) ? 0 : (column == 1) ? lineOffset / 2 : lineOffset;
                 int yOffset = (row == 0) ? 0 : (row == 1) ? lineOffset / 2 : lineOffset;
+                tokenPosition = new Vector2((column * _xImage.Width) + xOffset, (row * _xImage.Height) + yOffset);
                 if(_gameBoard[row, column] == GameSpaceState.X)
                 {
                     Vector2 drawPositionX = new Vector2((column * _xImage.Width) + xOffset, (row * _xImage.Height) + yOffset);
@@ -199,26 +216,39 @@ public class TicTacToe : Game
     }
     private bool CheckForWinner(GameSpaceState player)
     {
+        _winningToken.Clear();
         for (int i = 0; i < _gameBoard.GetLength(0); i++)
         {
             // Check the rows
             if (_gameBoard[i, 0] == player && _gameBoard[i, 1] == player && _gameBoard[i, 2] == player)
             {
+                _winningToken.Add(new Vector2(i, 0));
+                _winningToken.Add(new Vector2(i, 1));
+                _winningToken.Add(new Vector2(i, 2));
                 return true;
             }
             // Check the columns
             if (_gameBoard[0, i] == player && _gameBoard[1, i] == player &&        _gameBoard[2, i] == player)
             {
+                _winningToken.Add(new Vector2(0, i));
+                _winningToken.Add(new Vector2(1, i));
+                _winningToken.Add(new Vector2(2, i));
                 return true;
             }
         }
         // Check Diagonals
         if (_gameBoard[0, 0] == player && _gameBoard[1, 1] == player && _gameBoard[2, 2] == player)
         {
+            _winningToken.Add(new Vector2(0, 0));
+            _winningToken.Add(new Vector2(1, 1));
+            _winningToken.Add(new Vector2(2, 2));
             return true;
         }
         if (_gameBoard[0, 2] == player && _gameBoard[1, 1] == player && _gameBoard[2, 0] == player)
         {
+            _winningToken.Add(new Vector2(0, 2));
+            _winningToken.Add(new Vector2(1, 1));
+            _winningToken.Add(new Vector2(2, 0));
             return true;
         }
         
@@ -239,3 +269,7 @@ public class TicTacToe : Game
         return true;
     }
 }
+
+/// I tried to get the code to work to change the winning lines tokens to green, i couldnt get it to work before the deadline, would appreciate if 
+/// you could leave feedback how I COULD have gotten it to work. If i wasn't on the right track and is a difficult explanation that is alright without feedback! 
+/// Thank you, Nash C
