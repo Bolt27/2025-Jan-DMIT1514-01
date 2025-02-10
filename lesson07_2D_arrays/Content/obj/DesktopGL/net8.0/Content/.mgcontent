@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson07_2D_arrays/Content/SystemArialFont.spritefont</File>
+    <File>C:/Github/2025-Jan-DMIT1514-01/lesson07_2D_arrays/Content/SystemArialFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Github/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/SystemArialFont.spritefont</SourceFile>
+  <SourceTime>2025-02-05T13:58:53.6457865-07:00</SourceTime>
+  <DestFile>C:/Github/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/bin/DesktopGL/Content/SystemArialFont.xnb</DestFile>
+  <DestTime>2025-02-09T02:01:18.7789723-07:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2024-08-16T11:05:56-06:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2024-08-16T11:05:56-06:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

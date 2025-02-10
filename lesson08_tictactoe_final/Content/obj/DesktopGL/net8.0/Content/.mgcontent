@@ -4,11 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/O.png</File>
-    <File>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/X.png</File>
-    <File>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/TicTacToeBoard.png</File>
+    <File>C:/Github/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/O.png</File>
+    <File>C:/Github/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/SystemArialFont.spritefont</File>
+    <File>C:/Github/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/TicTacToeBoard.png</File>
+    <File>C:/Github/2025-Jan-DMIT1514-01/lesson08_tictactoe_final/Content/X.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
