@@ -34,7 +34,7 @@ public class Pong : Game
         _ballPosition.Y = 65;
 
         _ballSpeed = 7.5f;
-        _ballDirection = new Vector2(1, 1);
+        _ballDirection = new Vector2(-1, 0);
 
         _ballDimensions = new Vector2(_BallWidthAndHeight, _BallWidthAndHeight);
         _playAreaBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
@@ -52,6 +52,16 @@ public class Pong : Game
 
     protected override void Update(GameTime gameTime)
     {
+        //in-class exercise #1:
+        //make the ball move, according to its speed and direction
+        _ballPosition += _ballDirection * _ballSpeed * (float) gameTime.ElapsedGameTime.TotalSeconds;
+
+        if(_ballPosition.X <= _playAreaBoundingBox.Left)
+        {
+            _ballDirection.X *= -1;
+        }
+
+
 
         base.Update(gameTime);
     }
