@@ -8,6 +8,7 @@ public class Pong : Game
 {
     
     private const int _WindowWidth = 250, _WindowHeight = 150, _BallWidthAndHeight = 7;
+    private const int _PlayAreaEdgeLineWidth = 4;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Texture2D _backgroundTexture, _ballTexture;
@@ -33,8 +34,8 @@ public class Pong : Game
         _ballPosition.X = 50;
         _ballPosition.Y = 65;
 
-        _ballSpeed = 20f;
-        _ballDirection = new Vector2(-1, 0);
+        _ballSpeed = 200f;
+        _ballDirection = new Vector2(-1, -1);
 
         _ballDimensions = new Vector2(_BallWidthAndHeight, _BallWidthAndHeight);
         _playAreaBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
@@ -56,17 +57,20 @@ public class Pong : Game
         //make the ball move, according to its speed and direction
         _ballPosition += _ballDirection * _ballSpeed * (float) gameTime.ElapsedGameTime.TotalSeconds;
 
-        if(_ballPosition.X <= _playAreaBoundingBox.Left)
+        //bounce ball off left and right sides
+        if(_ballPosition.X <= _playAreaBoundingBox.Left || (_ballPosition.X + _ballDimensions.X) >= _playAreaBoundingBox.Right)
         {
             _ballDirection.X *= -1;
         }
-        if( (_ballPosition.X + _ballDimensions.X) >= _playAreaBoundingBox.Right)
-        {
-            _ballDirection.X *= -1;
-        }
-        //in-class exercise #2:
-        //make the ball bounce off of the right wall
 
+        //bounce ball off top and bottom
+        if  (
+                _ballPosition.Y <= (_playAreaBoundingBox.Top + _PlayAreaEdgeLineWidth) 
+                || (_ballPosition.Y + _ballDimensions.Y) >= (_playAreaBoundingBox.Bottom - _PlayAreaEdgeLineWidth)
+            )
+        {
+            _ballDirection.Y *= -1;
+        }
 
         base.Update(gameTime);
     }
