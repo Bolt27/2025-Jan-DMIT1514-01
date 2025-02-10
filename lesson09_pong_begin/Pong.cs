@@ -33,7 +33,7 @@ public class Pong : Game
         _ballPosition.X = 50;
         _ballPosition.Y = 65;
 
-        _ballSpeed = 7.5f;
+        _ballSpeed = 20f;
         _ballDirection = new Vector2(-1, 0);
 
         _ballDimensions = new Vector2(_BallWidthAndHeight, _BallWidthAndHeight);
@@ -60,7 +60,12 @@ public class Pong : Game
         {
             _ballDirection.X *= -1;
         }
-
+        if( (_ballPosition.X + _ballDimensions.X) >= _playAreaBoundingBox.Right)
+        {
+            _ballDirection.X *= -1;
+        }
+        //in-class exercise #2:
+        //make the ball bounce off of the right wall
 
 
         base.Update(gameTime);
