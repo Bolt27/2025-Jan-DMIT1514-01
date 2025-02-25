@@ -31,7 +31,7 @@ public class Pong : Game
         _graphics.PreferredBackBufferHeight = _WindowHeight;
         _graphics.ApplyChanges();
 
-        _playAreaBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
+        _playAreaBoundingBox = new Rectangle(0, _PlayAreaEdgeLineWidth, _WindowWidth, _WindowHeight - 2 * _PlayAreaEdgeLineWidth);
 
         _ball = new Ball();
                         //position,         direction           scale       game bounding box

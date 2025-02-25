@@ -52,7 +52,7 @@ public class Ball
 
     internal void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.Draw(_texture, _position, null, Color.White, 0, Vector2.Zero, _gameScale, SpriteEffects.None, 0);
+        spriteBatch.Draw(_texture, _position, null, Color.BlueViolet, 0, Vector2.Zero, _gameScale, SpriteEffects.None, 0);
         
     }
 }
