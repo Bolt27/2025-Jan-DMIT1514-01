@@ -47,7 +47,7 @@ public class TicTacToe : Game
     protected override void Initialize()
     {
         _graphics.PreferredBackBufferWidth = _WindowWidth;
-        _graphics.PreferredBackBufferHeight = _WindowHeight + 40;
+        _graphics.PreferredBackBufferHeight = _WindowHeight + HUD.Height;
         _graphics.ApplyChanges();
 
         _hud = new HUD();
@@ -124,12 +124,18 @@ public class TicTacToe : Game
                 if(_nextTokenToBePlayed == GameSpaceState.X)
                 {
                     _nextTokenToBePlayed = GameSpaceState.O;
+                    _hud.XTurnCount++;
                 }
                 else
                 {
                     _nextTokenToBePlayed = GameSpaceState.X;
+                    _hud.OTurnCount++;
                 }
                 _currentGameState = GameState.WaitForPlayerMove;
+
+                //if we detect a winner
+                _hud.Message = "X Wins";
+
                 break;
             case GameState.GameOver:
                 //wait for a click anywhere, and then change _currentGameState

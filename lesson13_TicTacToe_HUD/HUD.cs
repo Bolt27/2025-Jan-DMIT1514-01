@@ -19,7 +19,11 @@ public class HUD
 #region game data
     private string _message = "";
     private int _xTurnCount = 0, _oTurnCount = 0;
-#endregion
+
+    public int XTurnCount { get => _xTurnCount; set => _xTurnCount = value; }
+    public int OTurnCount { get => _oTurnCount; set => _oTurnCount = value; }
+    public string Message { set => _message = value; }
+    #endregion
 
     internal void Initialize(Vector2 position)
     {
@@ -37,8 +41,8 @@ public class HUD
     internal void Draw(SpriteBatch spriteBatch)
     {
         spriteBatch.Draw(_background, _position, Color.White);
-        spriteBatch.DrawString(_textFont, "X = " + _xTurnCount, _xScorePosition, Color.Blue);
-        spriteBatch.DrawString(_textFont, "O = " + _oTurnCount, _oScorePosition, Color.Blue);
+        spriteBatch.DrawString(_textFont, "X = " + XTurnCount, _xScorePosition, Color.Blue);
+        spriteBatch.DrawString(_textFont, "O = " + OTurnCount, _oScorePosition, Color.Blue);
         spriteBatch.DrawString(_textFont, _message, _messagePosition, Color.Blue);
     }
 }
