@@ -23,6 +23,8 @@ public class HUD
     public int XTurnCount { get => _xTurnCount; set => _xTurnCount = value; }
     public int OTurnCount { get => _oTurnCount; set => _oTurnCount = value; }
     public string Message { set => _message = value; }
+
+    public static int Height => _Height;
     #endregion
 
     internal void Initialize(Vector2 position)
