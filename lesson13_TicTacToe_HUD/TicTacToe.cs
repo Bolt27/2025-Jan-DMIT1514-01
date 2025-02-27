@@ -1,5 +1,4 @@
-﻿using System.Data;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -14,6 +13,9 @@ public class TicTacToe : Game
     private MouseState _currentMouseState, _previousMouseState;
     private const int _WindowWidth = 170, _WindowHeight = 170;
 
+    private HUD _hud;
+
+#region data structures
     public enum GameState
     {
         Initialize, WaitForPlayerMove, MakePlayerMove, EvaluatePlayerMove, GameOver
@@ -33,7 +35,7 @@ public class TicTacToe : Game
             {GameSpaceState.Empty, GameSpaceState.Empty, GameSpaceState.Empty},
             {GameSpaceState.Empty, GameSpaceState.Empty, GameSpaceState.Empty}
         };
-
+#endregion
 #region set up methods
     public TicTacToe()
     {
@@ -45,8 +47,11 @@ public class TicTacToe : Game
     protected override void Initialize()
     {
         _graphics.PreferredBackBufferWidth = _WindowWidth;
-        _graphics.PreferredBackBufferHeight = _WindowHeight;
+        _graphics.PreferredBackBufferHeight = _WindowHeight + 40;
         _graphics.ApplyChanges();
+
+        _hud = new HUD();
+        _hud.Initialize(new Vector2(0, _WindowHeight));
 
         base.Initialize();
     }
@@ -58,6 +63,8 @@ public class TicTacToe : Game
         _gameBoardImage = Content.Load<Texture2D>("TicTacToeBoard");
         _xImage = Content.Load<Texture2D>("X");
         _oImage = Content.Load<Texture2D>("O");
+
+        _hud.LoadContent(Content);
     }
 #endregion
 
@@ -141,6 +148,9 @@ public class TicTacToe : Game
         _spriteBatch.Begin();
 
         _spriteBatch.Draw(_gameBoardImage, Vector2.Zero, Color.White);
+
+        _hud.Draw(_spriteBatch);
+
         this.DrawCurrentGameBoard();
         switch(_currentGameState)
         {

@@ -33,3 +33,8 @@
 /processor:FontDescriptionProcessor
 /build:SystemArialFont.spritefont
 
+#begin HUDBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:HUDBackground.png
+
