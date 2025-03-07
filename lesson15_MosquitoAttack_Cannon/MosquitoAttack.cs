@@ -6,8 +6,14 @@ namespace lesson15_MosquitoAttack_Cannon;
 
 public class MosquitoAttack : Game
 {
+    private const int _WindowWidth = 550, _WindowHeight = 400;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+
+    private Texture2D _background;
+    private SpriteFont _arial;
+    
+    private Cannon _cannon;
 
     public MosquitoAttack()
     {
@@ -18,25 +24,28 @@ public class MosquitoAttack : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
+        _graphics.PreferredBackBufferWidth = _WindowWidth;
+        _graphics.PreferredBackBufferHeight = _WindowHeight;
+        _graphics.ApplyChanges();
+
+        _cannon = new Cannon();
 
         base.Initialize();
+
+        _cannon.Initialize(new Vector2(50, 325));
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        // TODO: use this.Content to load your game content here
+        _background = Content.Load<Texture2D>("Background");
+        _arial = Content.Load<SpriteFont>("SystemArialFont");
+        _cannon.LoadContent(Content);
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        // TODO: Add your update logic here
-
+        _cannon.Update(gameTime);
         base.Update(gameTime);
     }
 
@@ -44,7 +53,11 @@ public class MosquitoAttack : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+
+        _spriteBatch.Draw(_background, Vector2.Zero, Color.White);
+        _cannon.Draw(_spriteBatch);
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
