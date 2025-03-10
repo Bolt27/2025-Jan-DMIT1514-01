@@ -31,8 +31,8 @@ public class MosquitoAttack : Game
         _cannon = new Cannon();
 
         base.Initialize();
-
-        _cannon.Initialize(new Vector2(50, 325));
+        Rectangle gameBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
+        _cannon.Initialize(new Vector2(50, 325), gameBoundingBox);
     }
 
     protected override void LoadContent()
@@ -45,6 +45,19 @@ public class MosquitoAttack : Game
 
     protected override void Update(GameTime gameTime)
     {
+        KeyboardState kbState = Keyboard.GetState();
+        if(kbState.IsKeyDown(Keys.Left))
+        {
+            _cannon.Direction = new Vector2(-1, 0);
+        }
+        else if (kbState.IsKeyDown(Keys.Right))
+        {
+            _cannon.Direction = new Vector2(1, 0);
+        }
+        else
+        {
+            _cannon.Direction = new Vector2(0, 0);
+        }
         _cannon.Update(gameTime);
         base.Update(gameTime);
     }
