@@ -45,7 +45,10 @@ public class Cannon
         {
             _position.X = _gameBoundingBox.Right - BoundingBox.Width;
         }
-        _animationPlayer.Update(gameTime);
+        else if(!Direction.Equals(Vector2.Zero)) //if the cannon is moving
+        {
+            _animationPlayer.Update(gameTime);
+        }
     }
     internal void Draw(SpriteBatch spriteBatch)
     {
