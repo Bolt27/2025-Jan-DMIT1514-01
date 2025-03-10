@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Github/2025-Jan-DMIT1514-01/lesson09_pong_begin/Content/Court.png</SourceFile>
-  <SourceTime>2025-02-10T10:48:42.2023687-07:00</SourceTime>
-  <DestFile>C:/Github/2025-Jan-DMIT1514-01/lesson09_pong_begin/Content/bin/DesktopGL/Content/Court.xnb</DestFile>
-  <DestTime>2025-02-10T10:57:12.4613036-07:00</DestTime>
+  <SourceFile>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson09_pong_begin/Content/Court.png</SourceFile>
+  <SourceTime>2025-02-10T10:14:21.6025522-07:00</SourceTime>
+  <DestFile>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson09_pong_begin/Content/bin/DesktopGL/Content/Court.xnb</DestFile>
+  <DestTime>2025-02-10T10:14:44.3002292-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T11:05:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

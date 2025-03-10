@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection.Metadata;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -8,17 +6,17 @@ namespace lesson09_pong_begin;
 
 public class Pong : Game
 {
-    const int _Scale = 2;
-    private const int _WindowWidth = 250 * _Scale, _WindowHeight = 150 * _Scale;
-    private const int _PLayAreaEdgeLineWidth = 4;
+    
+    private const int _WindowWidth = 250, _WindowHeight = 150, _BallWidthAndHeight = 7;
+    private const int _PlayAreaEdgeLineWidth = 4;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    private Texture2D _backgroundTexture;
+    private Texture2D _backgroundTexture, _ballTexture;
 
     private Rectangle _playAreaBoundingBox;
     //to keep track of the state of the ball
-
-    private Ball _ball;
+    private Vector2 _ballDimensions, _ballPosition, _ballDirection;
+    private float _ballSpeed;
 
     public Pong()
     {
@@ -33,10 +31,13 @@ public class Pong : Game
         _graphics.PreferredBackBufferHeight = _WindowHeight;
         _graphics.ApplyChanges();
 
-        _ball = new Ball();
-                            //position        // Direction      // Scale    // Bounding Box
-        _ball.Initialize(new Vector2(50, 65), new Vector2(-1, 1), _Scale, _playAreaBoundingBox);
+        _ballPosition.X = 50;
+        _ballPosition.Y = 65;
 
+        _ballSpeed = 200f;
+        _ballDirection = new Vector2(-1, -1);
+
+        _ballDimensions = new Vector2(_BallWidthAndHeight, _BallWidthAndHeight);
         _playAreaBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
 
         base.Initialize();
@@ -47,12 +48,31 @@ public class Pong : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         _backgroundTexture = Content.Load<Texture2D>("Court");
-        _ball.LoadContent(Content);
+        _ballTexture = Content.Load<Texture2D>("Ball");
     }
 
     protected override void Update(GameTime gameTime)
     {
-        _ball.Update(gameTime);
+        //in-class exercise #1:
+        //make the ball move, according to its speed and direction
+        _ballPosition += _ballDirection * _ballSpeed * (float) gameTime.ElapsedGameTime.TotalSeconds;
+
+        //bounce ball off left and right sides
+        if(_ballPosition.X <= _playAreaBoundingBox.Left || (_ballPosition.X + _ballDimensions.X) >= _playAreaBoundingBox.Right)
+        {
+            _ballDirection.X *= -1;
+        }
+
+        //bounce ball off top and bottom
+        if  (
+                _ballPosition.Y <= (_playAreaBoundingBox.Top + _PlayAreaEdgeLineWidth) 
+                || (_ballPosition.Y + _ballDimensions.Y) >= (_playAreaBoundingBox.Bottom - _PlayAreaEdgeLineWidth)
+            )
+        {
+            _ballDirection.Y *= -1;
+        }
+
+        base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
@@ -61,9 +81,8 @@ public class Pong : Game
 
         _spriteBatch.Begin();
 
-        _spriteBatch.Draw(_backgroundTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, _Scale, SpriteEffects.None, 0);
-
-        _ball.Draw(_spriteBatch);
+        _spriteBatch.Draw(_backgroundTexture, Vector2.Zero, Color.White);
+        _spriteBatch.Draw(_ballTexture, _ballPosition, Color.White);
         _spriteBatch.End();
 
         base.Draw(gameTime);
