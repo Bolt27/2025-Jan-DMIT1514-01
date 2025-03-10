@@ -79,7 +79,7 @@ public class MosquitoAttack : Game
                 if(kbState.IsKeyDown(Keys.P) && _kbPreviousState.IsKeyUp(Keys.P))
                 {
                     _gameState = MosquitoAttackState.Paused;
-                    _status = "Game paused press P to start playing again.";
+                    _status = "Game paused. Press P to start playing again.";
                 }
                 break;
             case MosquitoAttackState.Paused:
@@ -103,7 +103,18 @@ public class MosquitoAttack : Game
         _spriteBatch.Begin();
 
         _spriteBatch.Draw(_background, Vector2.Zero, Color.White);
-        _cannon.Draw(_spriteBatch);
+        switch(_gameState)
+        {
+            case MosquitoAttackState.Playing:
+                _cannon.Draw(_spriteBatch);
+                break;
+            case MosquitoAttackState.Paused:
+                _spriteBatch.DrawString(_arial, _status, new Vector2(20, 50), Color.White);
+                break;
+            case MosquitoAttackState.Over:
+                break;
+        }
+        
         _spriteBatch.End();
 
         base.Draw(gameTime);
