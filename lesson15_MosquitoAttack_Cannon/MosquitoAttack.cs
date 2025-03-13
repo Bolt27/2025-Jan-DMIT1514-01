@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -6,7 +7,7 @@ namespace lesson15_MosquitoAttack_Cannon;
 
 public class MosquitoAttack : Game
 {
-    private const int _WindowWidth = 550, _WindowHeight = 400;
+    private const int _WindowWidth = 550, _WindowHeight = 400, _NumMosquitoes = 10;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
@@ -14,7 +15,7 @@ public class MosquitoAttack : Game
     private SpriteFont _arial;
     
     private Cannon _cannon;
-    private Mosquito _mosquito;
+    private Mosquito [] _mosquitoes;
 
     protected enum MosquitoAttackState
     {
@@ -38,12 +39,32 @@ public class MosquitoAttack : Game
         _graphics.ApplyChanges();
 
         _cannon = new Cannon();
-        _mosquito = new Mosquito();
+
+        _mosquitoes = new Mosquito[_NumMosquitoes];
+
+        for(int c = 0; c < _NumMosquitoes; c++)
+        {
+            _mosquitoes[c] = new Mosquito();
+        }
 
         base.Initialize();
         Rectangle gameBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
         _cannon.Initialize(new Vector2(50, 325), gameBoundingBox);
-        _mosquito.Initialize(new Vector2(25, 25), gameBoundingBox, 250, new Vector2(-1, 0));
+
+        Random rando = new Random();
+        foreach(Mosquito mosquito in _mosquitoes)
+        {
+            int xDirection = rando.Next(1, 3);
+            if(xDirection == 2)
+            {
+                xDirection = -1;
+            }
+            int speed = rando.Next(50, 251);
+            int xPosition = rando.Next(1, _WindowWidth - mosquito.BoundingBox.Width);
+            mosquito.Initialize(new Vector2(xPosition, 25), gameBoundingBox, speed, new Vector2(xDirection, 0));
+        }
+
+        
         _gameState = MosquitoAttackState.Playing;
 
         _kbPreviousState = Keyboard.GetState();
