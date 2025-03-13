@@ -76,7 +76,10 @@ public class MosquitoAttack : Game
         _background = Content.Load<Texture2D>("Background");
         _arial = Content.Load<SpriteFont>("SystemArialFont");
         _cannon.LoadContent(Content);
-        _mosquito.LoadContent(Content);
+        foreach(Mosquito mosquito in _mosquitoes)
+        {
+            mosquito.LoadContent(Content);
+        }
     }
 
     protected override void Update(GameTime gameTime)
@@ -99,7 +102,10 @@ public class MosquitoAttack : Game
                     _cannon.Direction = new Vector2(0, 0);
                 }
                 _cannon.Update(gameTime);
-                _mosquito.Update(gameTime);
+                foreach(Mosquito mosquito in _mosquitoes)
+                {
+                    mosquito.Update(gameTime);
+                }
                 //is this a new key down event?
                 if(kbState.IsKeyDown(Keys.P) && _kbPreviousState.IsKeyUp(Keys.P))
                 {
@@ -132,7 +138,10 @@ public class MosquitoAttack : Game
         {
             case MosquitoAttackState.Playing:
                 _cannon.Draw(_spriteBatch);
-                _mosquito.Draw(_spriteBatch);
+                foreach(Mosquito mosquito in _mosquitoes)
+                {
+                    mosquito.Draw(_spriteBatch);
+                }
                 break;
             case MosquitoAttackState.Paused:
                 _spriteBatch.DrawString(_arial, _status, new Vector2(20, 50), Color.White);
