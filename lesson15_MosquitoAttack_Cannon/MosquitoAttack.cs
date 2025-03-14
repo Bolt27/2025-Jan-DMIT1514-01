@@ -81,7 +81,6 @@ public class MosquitoAttack : Game
             mosquito.LoadContent(Content);
         }
     }
-
     protected override void Update(GameTime gameTime)
     {
         KeyboardState kbState = Keyboard.GetState();
@@ -100,6 +99,10 @@ public class MosquitoAttack : Game
                 else
                 {
                     _cannon.Direction = new Vector2(0, 0);
+                }
+                if(kbState.IsKeyDown(Keys.Space) && _kbPreviousState.IsKeyUp(Keys.Space))
+                {
+                    _cannon.Shoot();
                 }
                 _cannon.Update(gameTime);
                 foreach(Mosquito mosquito in _mosquitoes)
