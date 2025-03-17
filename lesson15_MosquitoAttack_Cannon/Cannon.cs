@@ -7,6 +7,7 @@ namespace lesson15_MosquitoAttack_Cannon;
 public class Cannon 
 {
     private const float _Speed = 250;
+    private const int _NumCannonBalls = 10;
     private CelAnimationSequence _animationSequence;
     private CelAnimationPlayer _animationPlayer;
     private Vector2 _position, _direction;
@@ -20,11 +21,15 @@ public class Cannon
         get => new Rectangle((int) _position.X, (int) _position.Y, _animationSequence.CelWidth, _animationSequence.CelHeight);
     }
 
-    CannonBall _cannonBall;
+    CannonBall[] _cannonBalls;
 
     public Cannon()
     {
-        _cannonBall = new CannonBall();
+        _cannonBalls = new CannonBall[_NumCannonBalls];
+        for(int c = 0; c < _NumCannonBalls; c++)
+        {
+            _cannonBalls[c] = new CannonBall();
+        }
     }
 
     internal void Initialize(Vector2 initialPosition, Rectangle gameBoundingBox)
@@ -34,13 +39,19 @@ public class Cannon
         _animationPlayer.Play(_animationSequence);
         _speed = _Speed;
         _gameBoundingBox = gameBoundingBox;
-        _cannonBall.Initialize(new Vector2(25, 300), gameBoundingBox, 50, new Vector2(0, -1));
+        foreach(CannonBall cBall in _cannonBalls)
+        {
+            cBall.Initialize(gameBoundingBox);
+        }
     }
     internal void LoadContent(ContentManager content)
     {
         Texture2D cannonTexture = content.Load<Texture2D>("Cannon");
         _animationSequence = new CelAnimationSequence(cannonTexture, 40, 1 / 8.0f);
-        _cannonBall.LoadContent(content);
+        foreach(CannonBall cBall in _cannonBalls)
+        {
+            cBall.LoadContent(content);
+        }
     }
     internal void Update(GameTime gameTime)
     {
@@ -58,12 +69,18 @@ public class Cannon
         {
             _animationPlayer.Update(gameTime);
         }
-        _cannonBall.Update(gameTime);
+        foreach(CannonBall cBall in _cannonBalls)
+        {
+            cBall.Update(gameTime);
+        }
     }
     internal void Draw(SpriteBatch spriteBatch)
     {
         _animationPlayer.Draw(spriteBatch, _position, SpriteEffects.None);
-        _cannonBall.Draw(spriteBatch);
+        foreach(CannonBall cBall in _cannonBalls)
+        {
+            cBall.Draw(spriteBatch);
+        }
     }
 
     internal void Shoot()

@@ -22,11 +22,8 @@ public class CannonBall
             return new Rectangle(_position.ToPoint(), new Point(_texture.Width, _texture.Height));
         }
     }
-    internal void Initialize(Vector2 initialPosition, Rectangle gameBoundingBox, float speed, Vector2 initialDirection)
+    internal void Initialize(Rectangle gameBoundingBox)
     {
-        _direction = initialDirection;
-        _position = initialPosition;
-        _speed = speed;
         _gameBoundingBox = gameBoundingBox;
         _state = State.NotFlying;
     }
@@ -41,6 +38,11 @@ public class CannonBall
         {
             case State.Flying:
                 _position += _direction * _speed * (float) gameTime.ElapsedGameTime.TotalSeconds;
+                if(!BoundingBox.Intersects(_gameBoundingBox))
+                {
+                    //I am outside of the game play area, so reload
+                    _state = State.NotFlying;
+                }
                 break;
             case State.NotFlying:
                 break;
