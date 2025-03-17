@@ -77,6 +77,6 @@ public class CannonBall
 
     internal bool ProcessCollision(Rectangle boundingBox)
     {
-        return BoundingBox.Intersects(boundingBox);
+        return _state == State.Flying && BoundingBox.Intersects(boundingBox);
     }
 }

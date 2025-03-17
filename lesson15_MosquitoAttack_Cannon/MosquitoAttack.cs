@@ -110,7 +110,7 @@ public class MosquitoAttack : Game
                     mosquito.Update(gameTime);
                     if(_cannon.ProcessCollision(mosquito.BoundingBox))
                     {
-
+                        mosquito.Die();
                     }
                 }
                 //is this a new key down event?
