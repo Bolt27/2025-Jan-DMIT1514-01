@@ -74,4 +74,9 @@ public class CannonBall
         }
         return shot;
     }
+
+    internal bool ProcessCollision(Rectangle boundingBox)
+    {
+        return BoundingBox.Intersects(boundingBox);
+    }
 }

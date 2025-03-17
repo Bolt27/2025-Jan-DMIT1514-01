@@ -1,4 +1,5 @@
 using System.Data;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -87,10 +88,6 @@ public class Cannon
     internal void Shoot()
     {
         Vector2 positionOfCannonBall = new Vector2(BoundingBox.Center.X, BoundingBox.Top);
-        
-        //loop through the array until we find a cannonBall that is not flying
-        //shoot it
-        //only one return statement
 
         int c = 0;
         bool shot = false;
@@ -99,8 +96,17 @@ public class Cannon
             shot = _cannonBalls[c].Shoot(positionOfCannonBall, new Vector2(0, -1), 50);
             c++;
         }
+    }
+    internal bool ProcessCollision(Rectangle boundingBox)
+    {
+        bool hit = false;
+        int c = 0;
+        while(!hit && c < _cannonBalls.Length)
+        {
+            hit = _cannonBalls[c].ProcessCollision(boundingBox);
+            c++;
+        }
 
-
-        //_cannonBall.Shoot(positionOfCannonBall, new Vector2(0, -1), 50);
+        return hit;
     }
 }
