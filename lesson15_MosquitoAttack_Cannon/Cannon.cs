@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -86,6 +87,20 @@ public class Cannon
     internal void Shoot()
     {
         Vector2 positionOfCannonBall = new Vector2(BoundingBox.Center.X, BoundingBox.Top);
-        _cannonBall.Shoot(positionOfCannonBall, new Vector2(0, -1), 50);
+        
+        //loop through the array until we find a cannonBall that is not flying
+        //shoot it
+        //only one return statement
+
+        int c = 0;
+        bool shot = false;
+        while(c < _NumCannonBalls && !shot)
+        {
+            shot = _cannonBalls[c].Shoot(positionOfCannonBall, new Vector2(0, -1), 50);
+            c++;
+        }
+
+
+        //_cannonBall.Shoot(positionOfCannonBall, new Vector2(0, -1), 50);
     }
 }

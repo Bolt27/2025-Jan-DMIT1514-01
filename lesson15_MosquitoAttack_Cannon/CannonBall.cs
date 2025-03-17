@@ -59,8 +59,9 @@ public class CannonBall
                 break;
         }
     }
-    internal void Shoot(Vector2 position, Vector2 direction, float speed)
+    internal bool Shoot(Vector2 position, Vector2 direction, float speed)
     {
+        bool shot = false;
         if(_state != State.Flying)
         {
             _state = State.Flying;
@@ -69,6 +70,8 @@ public class CannonBall
             _position.X -= BoundingBox.Width / 2;
             _direction = direction;
             _speed = speed;
+            shot = true;
         }
+        return shot;
     }
 }
