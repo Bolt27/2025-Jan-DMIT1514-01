@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace lesson21_MosquitoAttack_Final;
+namespace lesson15_MosquitoAttack_Cannon;
 
 public class CelAnimationPlayer
 {
