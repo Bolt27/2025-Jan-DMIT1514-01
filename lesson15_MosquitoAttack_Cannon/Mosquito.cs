@@ -10,7 +10,8 @@ public class Mosquito
 {
     private const int _UpperRandomFiringRange = 100;
     private Random _randomNumberGenerator = new Random();
-    private CelAnimationSequence _animationSequence;
+    private CelAnimationSequence _animationSequenceAlive;
+    private CelAnimationSequence _animationSequenceDying;
     private CelAnimationPlayer _animationPlayer;
     private Vector2 _position, _direction;
     private float _speed;
@@ -19,7 +20,7 @@ public class Mosquito
     private Rectangle _gameBoundingBox;
     internal Rectangle BoundingBox
     {   
-        get{ return new Rectangle(_position.ToPoint(), new Point(_animationSequence.CelWidth, _animationSequence.CelHeight));}
+        get{ return new Rectangle(_position.ToPoint(), new Point(_animationSequenceAlive.CelWidth, _animationSequenceAlive.CelHeight));}
     }
     internal bool Alive => _state == State.Alive;
 
@@ -33,7 +34,7 @@ public class Mosquito
         _direction = initialDirection;
         _position = initialPosition;
         _animationPlayer = new CelAnimationPlayer();
-        _animationPlayer.Play(_animationSequence);
+        _animationPlayer.Play(_animationSequenceAlive);
         _speed = speed;
         _gameBoundingBox = gameBoundingBox;
         _fireBall.Initialize(gameBoundingBox);
@@ -43,7 +44,8 @@ public class Mosquito
 
     internal void LoadContent(ContentManager content)
     {
-        _animationSequence = new CelAnimationSequence(content.Load<Texture2D>("Mosquito"), 46, 1 / 8.0f);
+        _animationSequenceAlive = new CelAnimationSequence(content.Load<Texture2D>("Mosquito"), 46, 1 / 8.0f);
+        _animationSequenceDying = new CelAnimationSequence(content.Load<Texture2D>("Poof"), 16, 1 / 8.0f);
         _fireBall.LoadContent(content);
     }
     internal void Update(GameTime gameTime)
@@ -64,6 +66,11 @@ public class Mosquito
                 }
                 break;
             case State.Dying:
+                _animationPlayer.Update(gameTime);
+                if(_animationPlayer.PlayedOnce)
+                {
+                    _state = State.Dead;
+                }
                 break;
             case State.Dead:
                 break;
@@ -75,9 +82,8 @@ public class Mosquito
         switch(_state)
         {
             case State.Alive:
-                _animationPlayer.Draw(spriteBatch, _position, SpriteEffects.None);
-                break;
             case State.Dying:
+                _animationPlayer.Draw(spriteBatch, _position, SpriteEffects.None);
                 break;
             case State.Dead:
                 break;
@@ -87,7 +93,9 @@ public class Mosquito
     }
     internal void Die()
     {
-        _state = State.Dead;
+        //the mosquito has been hit
+        _animationPlayer.PlayOnce(_animationSequenceDying);
+        _state = State.Dying;
     }
     private void Shoot()
     {
