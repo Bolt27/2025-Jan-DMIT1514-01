@@ -87,13 +87,14 @@ public class Cannon
 
     internal void Shoot()
     {
-        Vector2 positionOfCannonBall = new Vector2(BoundingBox.Center.X, BoundingBox.Top);
+        
 
         int c = 0;
         bool shot = false;
         while(c < _NumCannonBalls && !shot)
         {
-            shot = _cannonBalls[c].Shoot(positionOfCannonBall, new Vector2(0, -1), 50);
+            Vector2 positionOfCannonBall = new Vector2(BoundingBox.Center.X, BoundingBox.Top);
+            shot = _cannonBalls[c].Shoot(positionOfCannonBall , new Vector2(0, -1), 50);
             c++;
         }
     }

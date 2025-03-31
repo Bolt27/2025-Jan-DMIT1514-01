@@ -24,7 +24,7 @@ public class FireBall : Projectile
         _animationPlayer.Play(_animationSequence);
         _dimensions = new Vector2(_animationSequence.CelWidth, _animationSequence.CelHeight);
     }
-    internal void LoadContent(ContentManager content)
+    internal override void LoadContent(ContentManager content)
     {
         _animationSequence = new CelAnimationSequence(content.Load<Texture2D>("FireBall"), 5, 1 / 8f);
     }

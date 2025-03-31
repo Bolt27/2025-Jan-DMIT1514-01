@@ -24,6 +24,8 @@ public abstract class Projectile
         _gameBoundingBox = gameBoundingBox;
         _state = State.NotFlying;
     }
+
+    internal abstract void LoadContent(ContentManager content);
     internal virtual void Update(GameTime gameTime)
     {
         switch(_state)
@@ -64,5 +66,15 @@ public abstract class Projectile
             shot = true;
         }
         return shot;
+    }
+    internal bool ProcessCollision(Rectangle boundingBox)
+    {
+        bool didHit = false;
+        if(_state == State.Flying && BoundingBox.Intersects(boundingBox))
+        {
+            didHit = true;
+            _state = State.NotFlying;
+        }
+        return didHit;
     }
 }
