@@ -4,33 +4,27 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace lesson15_MosquitoAttack_Cannon;
 
-public class CannonBall
+public abstract class Projectile
 {
-    private Vector2 _position, _direction;
-    private float _speed;
-    private Rectangle _gameBoundingBox;
-    private Texture2D _texture;
-
-    private enum State { Flying, NotFlying}
-    private State _state;
+    protected Vector2 _position, _direction, _dimensions;
+    protected float _speed;
+    protected Rectangle _gameBoundingBox;
+    protected enum State { Flying, NotFlying}
+    protected State _state;
     internal Rectangle BoundingBox
     {
         get
         {
-            return new Rectangle(_position.ToPoint(), new Point(_texture.Width, _texture.Height));
+            return new Rectangle(_position.ToPoint(), _dimensions.ToPoint());
         }
     }
-    internal void Initialize(Rectangle gameBoundingBox)
+    //"virtual" means "my children may override this method, but it's not required"
+    internal virtual void Initialize(Rectangle gameBoundingBox)
     {
         _gameBoundingBox = gameBoundingBox;
         _state = State.NotFlying;
     }
-
-    internal void LoadContent(ContentManager content)
-    {
-        _texture = content.Load<Texture2D>("CannonBall");
-    }
-    internal void Update(GameTime gameTime)
+    internal virtual void Update(GameTime gameTime)
     {
         switch(_state)
         {
@@ -38,7 +32,6 @@ public class CannonBall
                 _position += _direction * _speed * (float) gameTime.ElapsedGameTime.TotalSeconds;
                 if(!BoundingBox.Intersects(_gameBoundingBox))
                 {
-                    //I am outside of the game play area, so reload
                     _state = State.NotFlying;
                 }
                 break;
@@ -46,17 +39,17 @@ public class CannonBall
                 break;
         }
     }
-    internal void Draw(SpriteBatch spriteBatch)
-    {
-        switch(_state)
-        {
-            case State.Flying:
-                spriteBatch.Draw(_texture, _position, Color.White);
-                break;
-            case State.NotFlying:
-                break;
-        }
-    }
+
+    /*
+        "abstract" forces the child class to define a method with this signature
+        it allows:
+            Projectile projectile01 = new FireBall();
+            Projectile projectile02 = new CannonBall();
+        but does not allow:
+            Projectile projectile = new Projectile();
+
+    */
+    internal abstract void Draw(SpriteBatch spriteBatch);
     internal bool Shoot(Vector2 position, Vector2 direction, float speed)
     {
         bool shot = false;
@@ -71,16 +64,5 @@ public class CannonBall
             shot = true;
         }
         return shot;
-    }
-
-    internal bool ProcessCollision(Rectangle boundingBox)
-    {
-        bool didHit = false;
-        if(_state == State.Flying && BoundingBox.Intersects(boundingBox))
-        {
-            didHit = true;
-            _state = State.NotFlying;
-        }
-        return didHit;
     }
 }

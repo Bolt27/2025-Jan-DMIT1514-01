@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lesson03_draw_sprite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20f2e33c3d196a2e2683b15dd97774b6acad3d44")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2d4918d0dbde59df905ed8e2a1dae3728938944")]
 [assembly: System.Reflection.AssemblyProductAttribute("lesson03_draw_sprite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lesson03_draw_sprite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

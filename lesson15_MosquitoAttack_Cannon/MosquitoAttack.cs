@@ -113,6 +113,19 @@ public class MosquitoAttack : Game
                         mosquito.Die();
                     }
                 }
+
+                /*
+                if(something something)
+                {
+                    _cannon.Die();
+                    _hud.PlayerLives--;
+                    if(_hud.PlayerLives <= 0)
+                    {
+                        _state = State.Over;
+                    }
+                }
+
+                */
                 //is this a new key down event?
                 if(kbState.IsKeyDown(Keys.P) && _kbPreviousState.IsKeyUp(Keys.P))
                 {
