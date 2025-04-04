@@ -49,7 +49,7 @@ public class MosquitoAttack : Game
 
         base.Initialize();
         Rectangle gameBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
-        _cannon.Initialize(new Vector2(50, 325), gameBoundingBox);
+        _cannon.Initialize(new Vector2(50, 325), gameBoundingBox, 250);//250 = speed of cannon
 
         Random rando = new Random();
         foreach(Mosquito mosquito in _mosquitoes)
