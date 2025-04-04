@@ -16,7 +16,7 @@ public abstract class Projectile
     {
         get
         {
-            return new Rectangle(_position.ToPoint() + _offset.ToPoint(), _dimensions.ToPoint());
+            return new Rectangle(_position.ToPoint(), _dimensions.ToPoint());
         }
     }
     //"virtual" means "my children may override this method, but it's not required"

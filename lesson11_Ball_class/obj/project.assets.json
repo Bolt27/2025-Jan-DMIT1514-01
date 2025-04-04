@@ -340,24 +340,31 @@
     ]
   },
   "packageFolders": {
-    "/Users/cnobert/.nuget/packages/": {}
+    "C:\\Users\\ncowa\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson11_Ball_class/lesson11_Ball_class.csproj",
+      "projectUniqueName": "C:\\Github\\2025-Jan-DMIT1514-01\\lesson11_Ball_class\\lesson11_Ball_class.csproj",
       "projectName": "lesson11_Ball_class",
-      "projectPath": "/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson11_Ball_class/lesson11_Ball_class.csproj",
-      "packagesPath": "/Users/cnobert/.nuget/packages/",
-      "outputPath": "/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson11_Ball_class/obj/",
+      "projectPath": "C:\\Github\\2025-Jan-DMIT1514-01\\lesson11_Ball_class\\lesson11_Ball_class.csproj",
+      "packagesPath": "C:\\Users\\ncowa\\.nuget\\packages\\",
+      "outputPath": "C:\\Github\\2025-Jan-DMIT1514-01\\lesson11_Ball_class\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/cnobert/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ncowa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -410,7 +417,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

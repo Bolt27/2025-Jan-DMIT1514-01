@@ -1,0 +1,8 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/Background.png","C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/Background.xnb","TextureProcessor","Texture2DContent",64304,880085,0.0530544
+"C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/Cannon.png","C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/Cannon.xnb","TextureProcessor","Texture2DContent",4069,35285,0.0035545
+"C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/CannonBall.png","C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/CannonBall.xnb","TextureProcessor","Texture2DContent",2822,149,0.1487896
+"C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/Fireball.png","C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/Fireball.xnb","TextureProcessor","Texture2DContent",2994,2805,0.0029832
+"C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/Mosquito.png","C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/Mosquito.xnb","TextureProcessor","Texture2DContent",9900,81045,0.015953
+"C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/Poof.png","C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/Poof.xnb","TextureProcessor","Texture2DContent",3129,8277,0.0030984
+"C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/SystemArialFont.spritefont","C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/SystemArialFont.xnb","FontDescriptionProcessor","SpriteFontContent",2073,21538,0.1397127

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/SystemArialFont.spritefont</SourceFile>
-  <SourceTime>2025-04-04T13:24:39.0827266-06:00</SourceTime>
-  <DestFile>/Users/cnobert/Documents/GitHub/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/Content/SystemArialFont.xnb</DestFile>
-  <DestTime>2025-04-04T13:26:18.7545873-06:00</DestTime>
+  <SourceFile>C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/SystemArialFont.spritefont</SourceFile>
+  <SourceTime>2025-04-04T15:09:52.4256003-06:00</SourceTime>
+  <DestFile>C:/Github/2025-Jan-DMIT1514-01/lesson16_Debugging/Content/bin/DesktopGL/Content/SystemArialFont.xnb</DestFile>
+  <DestTime>2025-04-04T15:15:12.0696849-06:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2024-08-16T11:05:56-06:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

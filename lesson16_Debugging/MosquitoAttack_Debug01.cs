@@ -7,7 +7,7 @@ namespace lesson16_Debugging;
 
 public class MosquitoAttack_Debug01 : Game
 {
-    private const int _WindowWidth = 550, _WindowHeight = 400, _NumMosquitoes = 1;
+    private const int _WindowWidth = 550, _WindowHeight = 400, _NumMosquitoes = 10;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private Texture2D _background;
@@ -39,8 +39,10 @@ public class MosquitoAttack_Debug01 : Game
         _mosquitoes = new Mosquito[_NumMosquitoes];
         for(int c = 0; c < _NumMosquitoes; c++)
         {
-            _mosquitoes[0] = new Mosquito(); 
+            _mosquitoes[c] = new Mosquito(); 
         }
+        _cannon = new Cannon();
+
         base.Initialize(); //this method call invokes LoadContent, thereby making cannon._animationSequence exist
 
         Rectangle gameBoundingBox = new Rectangle(0, 0, _WindowWidth, _WindowHeight);
