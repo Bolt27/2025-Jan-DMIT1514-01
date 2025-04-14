@@ -1,12 +1,13 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace lesson18_Platformer;
 
 public class Player
 {
+    private const int _Speed = 150;
     private enum State
     {
         Idle, Walking, Jumping
@@ -21,6 +22,7 @@ public class Player
     private Vector2 _velocity;
     private Rectangle _gameBoundingBox;
     private Vector2 _dimensions;
+    private bool _facingRight;
     internal Rectangle BoundingBox
     {
         get
@@ -39,6 +41,7 @@ public class Player
         _state = State.Idle;
         _animationPlayer.Play(_idleSequence);
         _dimensions = new Vector2(30, 46);
+        _facingRight = true;
     }
     internal void LoadContent(ContentManager Content)
     {
@@ -49,6 +52,16 @@ public class Player
     internal void Update(GameTime gameTime)
     {
         _animationPlayer.Update(gameTime);
+
+        _velocity.Y += Platformer._Gravity * (float) gameTime.ElapsedGameTime.TotalSeconds;
+        _position += _velocity * (float) gameTime.ElapsedGameTime.TotalSeconds;
+        
+        //are we moving up or down faster than gravity?
+        if(Math.Abs(_velocity.Y) > Platformer._Gravity * (float) gameTime.ElapsedGameTime.TotalSeconds)
+        {
+            _state = State.Jumping;
+            _animationPlayer.Play(_jumpSequence);
+        }
         switch (_state)
         {
             case State.Jumping:
@@ -66,8 +79,40 @@ public class Player
                 case State.Jumping:
                 case State.Idle:
                 case State.Walking:
-                    _animationPlayer.Draw(spriteBatch, _position, SpriteEffects.None);
+                    SpriteEffects effects = SpriteEffects.None;
+                    if(!_facingRight)
+                    {
+                        effects = SpriteEffects.FlipHorizontally;
+                    }
+                    _animationPlayer.Draw(spriteBatch, _position, effects);
                     break;
             }
+    }
+    internal void MoveHorizontally(float direction)
+    {
+        _velocity.X = direction * _Speed;
+        if(direction > 0)
+        {
+            _facingRight = true;
+        }
+        else if (direction < 0)
+        {
+            _facingRight = false;
+        }
+
+        if(_state != State.Jumping)
+        {
+            _animationPlayer.Play(_walkSequence);
+            _state = State.Walking;
+        }
+    }
+    internal void Stop()
+    {
+        _velocity.X = 0;
+        if(_state == State.Walking)
+        {
+            _state = State.Idle;
+            _animationPlayer.Play(_idleSequence);
+        }
     }
 }
