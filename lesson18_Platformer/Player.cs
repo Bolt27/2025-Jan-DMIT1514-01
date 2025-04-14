@@ -7,6 +7,7 @@ namespace lesson18_Platformer;
 
 public class Player
 {
+    private const int _Speed = 150;
     private enum State
     {
         Idle, Walking, Jumping
@@ -49,6 +50,7 @@ public class Player
     internal void Update(GameTime gameTime)
     {
         _animationPlayer.Update(gameTime);
+        _position += _velocity * (float) gameTime.ElapsedGameTime.TotalSeconds;
         switch (_state)
         {
             case State.Jumping:
@@ -69,5 +71,23 @@ public class Player
                     _animationPlayer.Draw(spriteBatch, _position, SpriteEffects.None);
                     break;
             }
+    }
+    internal void MoveHorizontally(float direction)
+    {
+        _velocity.X = direction * _Speed;
+        if(_state != State.Jumping)
+        {
+            _animationPlayer.Play(_walkSequence);
+            _state = State.Walking;
+        }
+    }
+    internal void Stop()
+    {
+        _velocity.X = 0;
+        if(_state == State.Walking)
+        {
+            _state = State.Idle;
+            _animationPlayer.Play(_idleSequence);
+        }
     }
 }
