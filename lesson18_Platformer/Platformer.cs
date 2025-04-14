@@ -9,8 +9,8 @@ public class Platformer : Game
     private const int _WindowWidth = 550, _WindowHeight = 400, _Gravity = 60;
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-
-    
+    private Rectangle _gameBoundingBox;
+    private Player _player;
     public Platformer()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -24,22 +24,22 @@ public class Platformer : Game
         _graphics.PreferredBackBufferHeight = _WindowHeight;
         _graphics.ApplyChanges();
 
+        _player = new Player(new Vector2(50, 50), _gameBoundingBox);
+
         base.Initialize();
+
+        _player.Initialize();
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        // TODO: use this.Content to load your game content here
+        _player.LoadContent(Content);
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
-        // TODO: Add your update logic here
+        _player.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -48,8 +48,9 @@ public class Platformer : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
-
+        _spriteBatch.Begin();
+        _player.Draw(_spriteBatch);
+        _spriteBatch.End();
         base.Draw(gameTime);
     }
 }
