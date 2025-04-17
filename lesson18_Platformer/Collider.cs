@@ -51,4 +51,37 @@ public class Collider
     {
         spriteBatch.Draw(_texture, BoundingBox, new Rectangle(0, 0, 1, 1), Color.White);
     }
+    internal bool ProcessCollision(Player player, GameTime gameTime)
+    {
+        bool didCollide = false;
+        if(BoundingBox.Intersects(player.BoundingBox))
+        {
+            didCollide = true;
+            switch(_type)
+            {
+                case ColliderType.Left:
+                    //if the player is moving rightwards
+                    if(player.Velocity.X > 0)
+                    {
+                        player.MoveHorizontally(0);
+                    }
+                    break;
+                case ColliderType.Right:
+                    //if the player is moving leftwards
+                    if(player.Velocity.X < 0)
+                    {
+                        player.MoveHorizontally(0);
+                    }
+                    break;
+                case ColliderType.Top:
+                    player.Land(BoundingBox); //stops the jump, if there is one
+                    player.StandOn(gameTime); //counteracts gravity
+                    break;
+                case ColliderType.Bottom:
+                    break;
+            }
+        }
+
+        return didCollide;
+    }
 }
