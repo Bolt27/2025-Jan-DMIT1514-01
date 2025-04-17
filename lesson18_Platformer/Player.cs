@@ -20,9 +20,10 @@ public class Player
 
     private Vector2 _position;
     private Vector2 _velocity;
+    public Vector2 Velocity { get => _velocity; }
     private Rectangle _gameBoundingBox;
     private Vector2 _dimensions;
-    private bool _facingRight;
+    
     internal Rectangle BoundingBox
     {
         get
@@ -30,6 +31,10 @@ public class Player
             return new Rectangle((int)_position.X, (int)_position.Y, (int)_dimensions.X, (int)_dimensions.Y);
         }
     }
+
+    
+
+    private bool _facingRight;
     public Player(Vector2 position, Rectangle gameBoundingBox)
     {
         _position = position;
@@ -40,7 +45,7 @@ public class Player
     {
         _state = State.Idle;
         _animationPlayer.Play(_idleSequence);
-        _dimensions = new Vector2(30, 46);
+        _dimensions = new Vector2(33, 34);
         _facingRight = true;
     }
     internal void LoadContent(ContentManager Content)
@@ -114,5 +119,19 @@ public class Player
             _state = State.Idle;
             _animationPlayer.Play(_idleSequence);
         }
+    }
+    internal void Land(Rectangle whatILandedOn)
+    {
+        if(_state == State.Jumping)
+        {   
+            //add an extra pixel to make up for what StandOn is about to do
+            _position.Y = whatILandedOn.Top - _dimensions.Y + 1;
+            _velocity.Y = 0;
+            _state = State.Walking;
+        }
+    }
+    internal void StandOn(GameTime gameTime)
+    {
+        _velocity.Y -= Platformer._Gravity * (float) gameTime.ElapsedGameTime.TotalSeconds;
     }
 }
