@@ -8,6 +8,7 @@ namespace lesson18_Platformer;
 public class Player
 {
     private const int _Speed = 150;
+    private const int _JumpForce = -100;
     private enum State
     {
         Idle, Walking, Jumping
@@ -23,7 +24,6 @@ public class Player
     public Vector2 Velocity { get => _velocity; }
     private Rectangle _gameBoundingBox;
     private Vector2 _dimensions;
-    
     internal Rectangle BoundingBox
     {
         get
@@ -111,6 +111,10 @@ public class Player
             _state = State.Walking;
         }
     }
+    internal void MoveVertically(float direction)
+    {
+        _velocity.Y = direction * _Speed;
+    }
     internal void Stop()
     {
         _velocity.X = 0;
@@ -133,5 +137,12 @@ public class Player
     internal void StandOn(GameTime gameTime)
     {
         _velocity.Y -= Platformer._Gravity * (float) gameTime.ElapsedGameTime.TotalSeconds;
+    }
+    internal void Jump()
+    {
+        if(_state != State.Jumping)
+        {
+            _velocity.Y = _JumpForce;
+        }
     }
 }
